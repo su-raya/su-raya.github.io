@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>su-raya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="ui/css/style.css"/>
+
+  <script src="config/site.js"></script>
+  <script src="config/bio.js"></script>
+  <script src="config/projects.js"></script>
+
+  <script src="helper.js"></script>
+</head>
+<body>
+
+  <!-- Boot screen -->
+  <div id="boot-screen">
+    <div id="boot-lines"></div>
+    <div id="pacman-wrap" style="display:none">
+      <span id="pacman-label">loading packages...</span>
+      <span id="pacman-bar"></span>
+    </div>
+  </div>
+
+  <div id="app">
+
+    <aside class="sidebar" id="sidebar-el"></aside>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="tb-dots">
+          <div class="tb-dot"></div>
+          <div class="tb-dot"></div>
+          <div class="tb-dot"></div>
+        </div>
+        <div class="tb-title" id="tb-title-el"></div>
+        <div class="tb-right" id="tb-right-el"></div>
+      </div>
+
+      <div class="content">
+        <header class="hero">
+          <div class="hero-prompt">
+            <span class="dollar">❯</span>
+            <span class="cmd">whoami && cat config/bio.js</span>
+          </div>
+          <pre class="hero-ascii" id="hero-ascii-el"></pre>
+          <div class="hero-tagline" id="hero-tagline-el"></div>
+        </header>
+
+        <section class="section">
+          <div class="section-cmd">
+            <span class="dollar">❯</span>
+            <span class="cat">cat</span>
+            <span class="file">about.txt</span>
+          </div>
+          <div class="about-lines" id="about-lines-el"></div>
+          <div class="skills-wrap"  id="skills-el"></div>
+        </section>
+
+        <section class="section">
+          <div class="section-cmd">
+            <span class="dollar">❯</span>
+            <span class="cat">ls</span>
+            <span class="file">~/projects/</span>
+          </div>
+          <div class="projects-grid" id="projects-grid-el"></div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span id="footer-left-el"></span>
+        <span>github.com/su-raya · built with ❤️ &amp;</span>
+      </footer>
+    </div>
+
+  </div>
+
+  <script src="ui/js/boot.js"></script>
+  <script src="ui/js/sidebar.js"></script>
+  <script src="ui/js/content.js"></script>
+
+  <script>
+    Sidebar.mount();
+    Content.mount();
+    Boot.run().then(() => document.getElementById('app').classList.add('visible'));
+  </script>
+
+</body>
+</html>
